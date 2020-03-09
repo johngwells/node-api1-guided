@@ -16,6 +16,7 @@ server.get('/hello', (req, res) => {
   res.status(200).json({ hello: 'Web 27'});
 });
 
+// post new hubs
 server.post('/api/hubs', (req, res) => {
   // axios.post{/api/hubs, data} <-- the data shows up as the req.body on the server
   const hubInfo = req.body;
@@ -28,6 +29,7 @@ server.post('/api/hubs', (req, res) => {
   res.status(201).json(hubInfo);
 });
 
+// Post new lessons
 server.post('/api/lessons', (req, res) => {
   const lessonInfo = req.body;
 
@@ -36,6 +38,14 @@ server.post('/api/lessons', (req, res) => {
   lessons.push(lessonInfo);
 
   res.status(201).json(lessonInfo);
+});
+
+server.get('/api/hubs', (req, res) => {
+  res.status(200).json(hubs);
+});
+
+server.get('/api/lessons', (req, res) => {
+  res.status(200).json(lessons);
 });
 
 const PORT = 5000;
